@@ -10,10 +10,11 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
+
+      # Packages
       environment.systemPackages =
-        [ pkgs.vim
+        [ # System Tools
+          pkgs.vim
           pkgs.bash
           pkgs.neovim
           pkgs.git
@@ -24,23 +25,46 @@
           pkgs.tokei
           pkgs.neofetch
           pkgs.gnupg
+          pkgs.skhd
+          pkgs.openssl
+          pkgs.zoxide
+          pkgs.fd
         ];
 
       # Homebrew packages
       homebrew = {
         enable = true;
-        onActivation.cleanup = "uninstall";
+
+        onActivation = {
+          autoUpdate = true;
+          cleanup = "uninstall";
+          upgrade = true;
+        };
 
 	taps = [];
-	brews = [];
+	brews =
+          [ "git"
+          ];
 	casks = 
           [ "microsoft-teams"
             "kitty"
             "min"
             "audacity"
             "zed"
+            "openvpn-connect"
+            "deezer"
           ];
+        masApps =
+          { Dashlane = 517914548;
+            Powerpoint = 462062816;
+            Excel = 462058435;
+            Word = 462054704;
+            Outlook = 985367838;
+            Slack = 803453959;
+            Messenger = 1480068668;
+          };
       };
+      environment.variables.HOMEBREW_NO_ANALYTICS = "1"; # No telemetry
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
@@ -80,7 +104,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."MacBook-Pro-RF-de-Marc" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."stallion" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
   };
