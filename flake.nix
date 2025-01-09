@@ -3,32 +3,63 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     configuration = { pkgs, ... }: {
 
+      # Users
+      users.knownUsers = [ "just.maiyak" ];
+      users.users."just.maiyak" = {
+        uid = 501;
+        name = "just.maiyak";
+        home = "/Users/just.maiyak";
+        shell = pkgs.bashInteractive;
+      };
+
       # Packages
       environment.systemPackages =
-        [ # System Tools
-          pkgs.vim
-          pkgs.bash
-          pkgs.neovim
-          pkgs.git
-          pkgs.fzf
-          pkgs.bat
-          pkgs.eza
-          pkgs.ripgrep
-          pkgs.tokei
-          pkgs.neofetch
-          pkgs.gnupg
-          pkgs.skhd
-          pkgs.openssl
-          pkgs.zoxide
-          pkgs.fd
+        with pkgs; [
+          # System Tools
+          vim
+          bashInteractive
+          neovim
+          git
+          fzf
+          bat
+          eza
+          ripgrep
+          tokei
+          neofetch
+          gnupg
+          skhd
+          openssl
+          fd
+          tre-command
+          tldr
+          zoxide
+          nix-direnv
+
+          colima
+          dive
+          docker
+          docker-compose
+
+          # Languages
+          nixfmt-rfc-style
+
+          # Fonts
+          nerd-fonts.monoid
+          nerd-fonts.jetbrains-mono
+          nerd-fonts.anonymice
+          nerd-fonts.commit-mono
         ];
 
       # Homebrew packages
@@ -53,6 +84,8 @@
             "zed"
             "openvpn-connect"
             "deezer"
+            "bruno"
+            "whatsapp"
           ];
         masApps =
           { Dashlane = 517914548;
@@ -68,6 +101,9 @@
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
+
+      # Disable nix channel
+      nix.channel.enable = false;
 
       # Enable alternative shell support in nix-darwin.
       programs.bash.enable = true;
@@ -105,7 +141,15 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
     darwinConfigurations."stallion" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules =
+        [ configuration
+          inputs.home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."just.maiyak" = import ./home.nix;
+          }
+        ];
     };
   };
 }
