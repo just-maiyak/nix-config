@@ -15,6 +15,7 @@
       # System Tools
       bashInteractive
       bat
+      colordiff
       dust
       eza
       fd
