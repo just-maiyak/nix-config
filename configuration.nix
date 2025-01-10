@@ -20,6 +20,7 @@
       eza
       fd
       fzf
+      git
       gnupg
       neofetch
       neovim
@@ -61,9 +62,7 @@
     };
 
     taps = [];
-    brews =
-      [ "git"
-      ];
+    brews = [];
     casks = 
       [ "microsoft-teams"
         "kitty"
