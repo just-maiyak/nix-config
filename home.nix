@@ -3,10 +3,6 @@ let zoxideHandle = "cd"; in
 {
   home.stateVersion = "24.11";
 
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
   programs = {
 
     direnv = {
@@ -52,8 +48,7 @@ let zoxideHandle = "cd"; in
       shellIntegration.enableBashIntegration = true;
       themeFile = "Dracula";
       font = {
-        name = "JetBrainsMono Nerd Font";
-	package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
         size = 18;
       };
     };

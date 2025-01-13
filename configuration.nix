@@ -43,8 +43,11 @@
 
       # Languages
       nixfmt-rfc-style
+    ];
 
-      # Fonts
+  # Fonts
+  fonts.packages =
+    with pkgs; [
       nerd-fonts.monoid
       nerd-fonts.jetbrains-mono
       nerd-fonts.anonymice
@@ -122,4 +125,5 @@
     screencapture.location = "~/Pictures/Screenshots";
     screensaver.askForPasswordDelay = 10;
   };
+
 }
