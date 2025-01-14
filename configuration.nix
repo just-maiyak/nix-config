@@ -118,8 +118,17 @@
 
   # macOS options
   system.defaults = {
-    dock.autohide = true;
-    dock.mru-spaces = false;
+    dock = {
+      autohide = true;
+      minimize-to-application = true;
+      mru-spaces = false;
+
+      # Hot corners
+      wvous-bl-corner = 13; # Bottom left: Lock Screen
+      wvous-br-corner = 14; # Bottom right: Quick Note
+      wvous-tl-corner = 11; # Top left: Launchpad
+      wvous-tr-corner = 2; # Top right: Mission Control
+    };
     finder.AppleShowAllExtensions = true;
     finder.FXPreferredViewStyle = "clmv";
     screencapture.location = "~/Pictures/Screenshots";
