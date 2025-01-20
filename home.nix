@@ -1,5 +1,42 @@
 { config, pkgs, lib, ... }:
-let zoxideHandle = "cd"; in
+let 
+  zoxideHandle = "cd";
+  shellOpts = {
+    enable = true;
+    shellAliases = {
+      # Handy
+      aepy = "./.venv/bin/activate";
+      cat = "bat";
+      du = "dust";
+      j = "cd";
+      jk = ''cd "$STRUKTUR_PATH"'';
+      ls = "exa --color";
+      ll = "exa -al --color";
+      la = "exa -al --color";
+      vim = "nvim";
+
+      # Docker
+      d = "docker";
+      dc = "docker container";
+      di = "docker image";
+      dn = "docker network";
+      dv = "docker volume";
+
+      # k8s
+      k = "kubectl";
+      kuc = "kubectl config use-context";
+      kns = ''kubectl config set-context "$(kubectl config current-context)" --namespace'';
+      kex = "kubectl exec -it";
+      kl = "kubectl logs";
+      kg = "kubectl get";
+      kgp = "kubectl get pods";
+      kd = "kubectl describe";
+      kgall = "kubectl get ingress,service,deployment,pod,statefulset";
+      kwatch = "kubectl get pods -w --all-namespaces";
+      kru = "kubectl rollout restart deployment";
+    };
+  };
+in
 {
   home.stateVersion = "24.11";
 
@@ -14,34 +51,9 @@ let zoxideHandle = "cd"; in
       config.global.load_dotenv = true;
     };
 
-    bash = {
-      enable = true;
-      shellAliases = {
-        # Handy
-        aepy = "./.venv/bin/activate";
-        cat = "bat";
-        du = "dust";
-        jk = ''${zoxideHandle} "$STRUKTUR_PATH"'';
-        ls = "exa --color";
-        ll = "exa -al --color";
-        la = "exa -al --color";
-        vim = "nvim";
-
-        # Docker
-        d = "docker";
-        dc = "docker container";
-        di = "docker image";
-        dn = "docker network";
-        dv = "docker volume";
-
-        # k8s
-        k = "kubectl";
-        kxt = "kubectl config use-context";
-
-        # ssh kitten
-        ssh = ''if [ $TERM = "xterm-kitty" ]; then TERM="xterm-256color" kitty +kitten ssh; fi'';
-      };
-    };
+    bash = shellOpts;
+    fish = shellOpts;
+    zsh = shellOpts;
 
     kitty = {
       enable = true;
@@ -242,6 +254,53 @@ let zoxideHandle = "cd"; in
       enable = true;
       enableBashIntegration = true;
       options = [ "--cmd" zoxideHandle ];
+    };
+
+    git = {
+      enable = true;
+      aliases = {
+        a = "add";
+	b = "branch --list --all";
+	ca = "commit --amend";
+	ci = "commit --interactive";
+	cm = "commit --message";
+	d = "difftool";
+	ds = "diff --summary";
+	i = "init";
+	lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'";
+	lr = "log --no-merges --format='* %s  %h'";
+	ls = "log --nomerges --oneline";
+        st = "status";
+	sw = "switch";
+	pf = "push --force";
+      };
+      userEmail = "marc.yefimchuk@radiofrance.com";
+      userName = "Marc Yefimchuk";
+      extraConfig = {
+        core.editor = "nvim";
+	init.defaultBranch = "main";
+	fetch.prune = true;
+	push.autoSetupRemote = true;
+	pull = {
+	  twohead = "ort";
+	  rebase = true;
+	};
+	credentials.helper = "cache --timeout=3600";
+	color = {
+	  diff = "auto";
+	  status = "auto";
+	  branch = "auto";
+	  interactive = "auto";
+	  ui = true;
+	  pager = true;
+	};
+	diff.tool = "nvimdiff";
+	difftool.prompt = false;
+	"difftool \"nvimdiff\"".cmd = ''nvim -d "$LOCAL" "$REMOTE"'';
+	"difftool \"nbdime\"".cmd = ''git-nbdifftool diff "$LOCAL" "$REMOTE" "$BASE"'';
+	mergetool.prompt = false;
+	"mergetool \"nbdime\"".cmd = ''git-nbmergetool merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'';
+      };
     };
 
     home-manager.enable = true;

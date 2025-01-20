@@ -6,7 +6,7 @@
     uid = 501;
     name = "just.maiyak";
     home = "/Users/just.maiyak";
-    shell = pkgs.bashInteractive;
+    shell = pkgs.fish;
   };
 
   # Packages
@@ -19,6 +19,7 @@
       dust
       eza
       fd
+      fish
       fzf
       git
       gnupg
@@ -28,12 +29,14 @@
       openssl
       ripgrep
       skhd
+      openssh
       starship
       tldr
       tokei
       tre-command
       vim
       zoxide
+      zsh
 
       # Virtualisation
       colima
@@ -44,6 +47,8 @@
       # Languages
       nixfmt-rfc-style
     ];
+
+  environment.shells = with pkgs; [ bashInteractive zsh fish ];
 
   # Fonts
   fonts.packages =
@@ -67,15 +72,16 @@
     taps = [];
     brews = [];
     casks = 
-      [ "microsoft-teams"
-        "kitty"
-        "min"
-        "audacity"
-        "zed"
-        "openvpn-connect"
-        "deezer"
+      [ "audacity"
+        "balenaetcher"
         "bruno"
+        "deezer"
+        "kitty"
+        "microsoft-teams"
+        "min"
+        "openvpn-connect"
         "whatsapp"
+        "zed"
       ];
     masApps =
       { Dashlane = 517914548;
@@ -97,6 +103,8 @@
 
   # Enable alternative shell support in nix-darwin.
   programs.bash.enable = true;
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
@@ -130,7 +138,7 @@
       wvous-tr-corner = 2; # Top right: Mission Control
     };
     finder.AppleShowAllExtensions = true;
-    finder.FXPreferredViewStyle = "clmv";
+    finder.FXPreferredViewStyle = "clmv"; # Prefer Columns
     screencapture.location = "~/Pictures/Screenshots";
     screensaver.askForPasswordDelay = 10;
   };
