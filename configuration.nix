@@ -22,6 +22,7 @@
       fish
       fzf
       git
+      git-delete-merged-branches
       gnupg
       neofetch
       neovim
