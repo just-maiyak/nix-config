@@ -13,6 +13,7 @@
   environment.systemPackages =
     with pkgs; [
       # System Tools
+      awscli2
       bashInteractive
       bat
       colordiff
