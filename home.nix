@@ -63,6 +63,7 @@ in
         name = "JetBrainsMono Nerd Font Mono";
         size = 18;
       };
+      extraConfig = "term xterm-256color"; # ... because else ssh fails to interpret inputs on darwin
     };
 
     starship = {
