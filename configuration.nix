@@ -115,6 +115,11 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 5;
 
+  # Automatic cleanup
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 10d";
+  nix.optimise.automatic = true;
+
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
