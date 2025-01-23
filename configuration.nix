@@ -126,7 +126,7 @@
   # Use TouchID for sudo login
   security.pam.enableSudoTouchIdAuth = true;
 
-  # x86_64 support
+  # x86_64 support via Rosetta
   nix.extraOptions = ''
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
@@ -146,6 +146,7 @@
     };
     finder.AppleShowAllExtensions = true;
     finder.FXPreferredViewStyle = "clmv"; # Prefer Columns
+    finder.ShowHardDrivesOnDesktop = true;
     screencapture.location = "~/Pictures/Screenshots";
     screensaver.askForPasswordDelay = 10;
   };
