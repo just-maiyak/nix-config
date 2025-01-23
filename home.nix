@@ -40,6 +40,8 @@ in
 {
   home.stateVersion = "24.11";
 
+  home.sessionVariables.EDITOR = "nvim";
+
   programs = {
 
     direnv = {
@@ -278,7 +280,6 @@ in
       userEmail = "marc.yefimchuk@radiofrance.com";
       userName = "Marc Yefimchuk";
       extraConfig = {
-        core.editor = "nvim";
 	init.defaultBranch = "main";
 	fetch.prune = true;
 	push.autoSetupRemote = true;
