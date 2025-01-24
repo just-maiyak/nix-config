@@ -76,6 +76,7 @@
     casks = 
       [ "audacity"
         "balenaetcher"
+	"beeper"
         "bruno"
         "deezer"
         "kitty"
@@ -86,13 +87,14 @@
         "zed"
       ];
     masApps =
-      { Dashlane = 517914548;
-        Powerpoint = 462062816;
+      { BitWarden = 1352778147;
+        Dashlane = 517914548;
         Excel = 462058435;
-        Word = 462054704;
-        Outlook = 985367838;
-        Slack = 803453959;
         Messenger = 1480068668;
+        Outlook = 985367838;
+        Powerpoint = 462062816;
+        Slack = 803453959;
+        Word = 462054704;
       };
   };
   environment.variables.HOMEBREW_NO_ANALYTICS = "1"; # No telemetry
