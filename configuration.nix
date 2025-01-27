@@ -31,7 +31,6 @@
       openssl
       ripgrep
       skhd
-      openssh
       starship
       tldr
       tokei
