@@ -25,6 +25,7 @@
       git
       git-delete-merged-branches
       gnupg
+      htop
       neofetch
       neovim
       nix-direnv
@@ -77,6 +78,7 @@
         "balenaetcher"
 	"beeper"
         "bruno"
+	"daisydisk"
         "deezer"
         "kitty"
         "microsoft-teams"
