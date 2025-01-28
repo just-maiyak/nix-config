@@ -27,6 +27,8 @@
       glow
       gnupg
       htop
+      macmon
+      mactop
       neofetch
       neovim
       nix-direnv
