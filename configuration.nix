@@ -24,6 +24,7 @@
       fzf
       git
       git-delete-merged-branches
+      glow
       gnupg
       htop
       neofetch
