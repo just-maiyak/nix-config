@@ -86,9 +86,11 @@
         "kitty"
         "microsoft-teams"
         "min"
+	"obsidian"
         "openvpn-connect"
         "whatsapp"
         "zed"
+	"zotero"
       ];
     masApps =
       { BitWarden = 1352778147;
