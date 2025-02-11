@@ -49,6 +49,24 @@ in
 
       config.global.hide_env_diff = true;
       config.global.load_dotenv = true;
+
+      stdlib = ''
+layout_uv() {
+    if [[ -d ".venv" ]]; then
+        VIRTUAL_ENV="$(pwd)/.venv"
+    fi
+
+    if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+        log_status "No virtual environment exists. Executing \`uv venv\` to create one."
+        uv venv
+        VIRTUAL_ENV="$(pwd)/.venv"
+    fi
+
+    PATH_add "$VIRTUAL_ENV/bin"
+    export UV_ACTIVE=1  # or VENV_ACTIVE=1
+    export VIRTUAL_ENV
+}
+      '';
     };
 
     bash = {
@@ -275,6 +293,7 @@ in
         a = "add";
 	b = "branch --list --all";
 	ca = "commit --amend";
+	cf = "commit --fixup";
 	ci = "commit --interactive";
 	cm = "commit --message";
 	d = "difftool";
@@ -315,6 +334,11 @@ in
       };
     };
 
+    zed-editor = {
+      enable = true;
+      userSettings.vim_mode = true;
+    };
+    
     home-manager.enable = true;
   };
 }

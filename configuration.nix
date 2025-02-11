@@ -24,6 +24,7 @@
       fzf
       git
       git-delete-merged-branches
+      git-filter-repo
       glow
       gnupg
       htop
