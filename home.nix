@@ -93,7 +93,44 @@ layout_uv() {
         name = "JetBrainsMono Nerd Font Mono";
         size = 18;
       };
-      extraConfig = "term xterm-256color"; # ... because else ssh fails to interpret inputs on darwin
+      settings = {
+        term = "xterm-256color"; # ... because else ssh fails to interpret inputs on darwin
+
+        background_opacity = 0.7;
+	background_blur = 32;
+
+	# Window
+	remember_window_size = true;
+        initial_window_width = 640;
+        initial_window_height = 400;
+	window_border_width = "0.5pt";
+	window_margin_width = 3;
+	draw_minimal_borders = true;
+	macos_titlebar_color = "dark";
+	active_border_color = "#6dffff";
+	inactive_border_color = "#2e4b68";
+	hide_window_decorations = "titlebar-only";
+
+	# Tabs
+	tab_bar_style = "powerline";
+
+        # Shortcuts
+
+	# macOS specific
+	macos_quit_when_last_window_closed = true;
+      };
+
+      keybindings = {
+        "cmd+enter" = "new_window";
+
+        "ctrl+shift+]" = "next_window";
+        "ctrl+shift+)" = "next_window";
+        "cmd+)" = "next_window";
+
+        "ctrl+shift+[" = "previous_window";
+        "ctrl+shift+(" = "previous_window";
+        "cmd+(" = "previous_window";
+      };
     };
 
     starship = {
