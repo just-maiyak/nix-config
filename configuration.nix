@@ -75,10 +75,11 @@
       upgrade = true;
     };
 
-    taps = [];
+    taps = [ "nikitabobko/tap" ];
     brews = [];
     casks = 
-      [ "audacity"
+      [ "aerospace"
+        "audacity"
         "balenaetcher"
 	"beeper"
         "bruno"
@@ -87,6 +88,7 @@
         "kitty"
         "microsoft-teams"
         "min"
+	"loop"
 	"obsidian"
         "openvpn-connect"
         "whatsapp"
@@ -158,6 +160,9 @@
     finder.ShowHardDrivesOnDesktop = true;
     screencapture.location = "~/Pictures/Screenshots";
     screensaver.askForPasswordDelay = 10;
+
+    # Move OS windows from anywhere using ctrl+cmd+click
+    NSGlobalDomain.NSWindowShouldDragOnGesture = true;
   };
 
 }
