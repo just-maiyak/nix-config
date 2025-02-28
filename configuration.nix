@@ -28,6 +28,7 @@
       glow
       gnupg
       htop
+      iina
       macmon
       mactop
       neofetch
