@@ -136,6 +136,7 @@ layout_uv() {
 
     starship = {
       enable = true;
+      enableFishIntegration = true;
       enableBashIntegration = true;
       settings = {
         format = lib.concatStrings [

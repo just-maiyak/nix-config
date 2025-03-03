@@ -134,7 +134,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Use TouchID for sudo login
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # x86_64 support via Rosetta
   nix.extraOptions = ''
