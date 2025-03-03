@@ -161,4 +161,18 @@
     screensaver.askForPasswordDelay = 10;
   };
 
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    base16Scheme = "${inputs.tt-schemes}/base24/dracula.yaml";
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+	name = "JetBrains Mono Nerd Font";
+      };
+      sizes.terminal = 18;
+    };
+    opacity.terminal = 0.8;
+
+  };
 }

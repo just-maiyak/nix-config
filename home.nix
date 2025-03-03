@@ -42,6 +42,13 @@ in
 
   programs = {
 
+    neovim.enable = true;
+
+    k9s = {
+      enable = true;
+      settings.skin = "dracula";
+    };
+
     direnv = {
       enable = true;
       enableBashIntegration = true;
@@ -87,16 +94,11 @@ layout_uv() {
 
     kitty = {
       enable = true;
+
       shellIntegration.enableBashIntegration = true;
-      themeFile = "Dracula";
-      font = {
-        name = "JetBrainsMono Nerd Font Mono";
-        size = 18;
-      };
       settings = {
         term = "xterm-256color"; # ... because else ssh fails to interpret inputs on darwin
 
-        background_opacity = 0.7;
 	background_blur = 32;
 
 	# Window
@@ -115,12 +117,11 @@ layout_uv() {
 	# Tabs
 	tab_bar_style = "powerline";
 
-        # Shortcuts
-
 	# macOS specific
 	macos_quit_when_last_window_closed = true;
       };
 
+      # Shortcuts
       keybindings = {
         "cmd+enter" = "new_window";
 

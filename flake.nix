@@ -12,9 +12,18 @@
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    stylix.url = "github:danth/stylix";
+    # stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    tt-schemes = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
+    };
+
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, lix-module, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, lix-module, home-manager, stylix, tt-schemes }:
   {
     darwinConfigurations."stallion" = nix-darwin.lib.darwinSystem {
       modules =
@@ -22,10 +31,11 @@
 	  lix-module.nixosModules.default
           inputs.home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+	    home-manager.backupFileExtension = "bak";
             home-manager.users."just.maiyak" = import ./home.nix;
           }
+	  stylix.darwinModules.stylix
         ];
       specialArgs = { inherit inputs; };
     };
