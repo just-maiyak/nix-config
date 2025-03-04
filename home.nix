@@ -105,7 +105,7 @@ layout_uv() {
 	remember_window_size = true;
         initial_window_width = 640;
         initial_window_height = 400;
-	window_border_width = "0.5pt";
+	window_border_width = "1pt";
 	window_margin_width = 3;
 	window_padding_width = 8;
 	draw_minimal_borders = true;

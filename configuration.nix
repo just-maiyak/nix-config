@@ -29,6 +29,7 @@
       gnupg
       htop
       iina
+      kitty
       macmon
       mactop
       neofetch
@@ -85,7 +86,6 @@
         "bruno"
 	"daisydisk"
         "deezer"
-        "kitty"
         "microsoft-teams"
         "min"
 	"obsidian"
