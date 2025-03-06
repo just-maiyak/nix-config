@@ -43,14 +43,17 @@ in
   programs = {
 
     neovim.enable = true;
+    neovim.package = pkgs.neovim-unwrapped;
 
     k9s = {
       enable = true;
+      package = pkgs.k9s;
       settings.skin = "dracula";
     };
 
     direnv = {
       enable = true;
+      package = pkgs.direnv;
       enableBashIntegration = true;
       nix-direnv.enable = true;
 
@@ -78,28 +81,35 @@ layout_uv() {
 
     bash = {
       enable = true;
+      package = pkgs.bash;
       inherit shellAliases;
       initExtra = brewHook;
     };
     fish = {
       enable = true;
+      package = pkgs.fish;
       inherit shellAliases;
       loginShellInit = brewHook;
     };
     zsh = {
       enable = true;
+      package = pkgs.zsh;
       inherit shellAliases;
       initExtra = brewHook;
     };
 
     kitty = {
       enable = true;
+      package = pkgs.kitty;
 
       shellIntegration.enableBashIntegration = true;
       settings = {
         term = "xterm-256color"; # ... because else ssh fails to interpret inputs on darwin
 
 	background_blur = 32;
+
+        # Fonts
+	disable_ligatures = "never";
 
 	# Window
 	remember_window_size = true;
@@ -137,6 +147,7 @@ layout_uv() {
 
     starship = {
       enable = true;
+      package = pkgs.starship;
       enableFishIntegration = true;
       enableBashIntegration = true;
       settings = {
@@ -318,17 +329,20 @@ layout_uv() {
 
     fzf = {
       enable = true;
+      package = pkgs.fzf;
       enableBashIntegration = true;
     };
 
     zoxide = {
       enable = true;
+      package = pkgs.zoxide;
       enableBashIntegration = true;
       options = [ "--cmd" zoxideHandle ];
     };
 
     git = {
       enable = true;
+      package = pkgs.git;
       aliases = {
         a = "add";
 	b = "branch --list --all";
@@ -373,6 +387,9 @@ layout_uv() {
 	"mergetool \"nbdime\"".cmd = ''git-nbmergetool merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'';
       };
     };
+
+    wezterm.enable = true;
+    wezterm.package = pkgs.wezterm;
 
     zed-editor = {
       enable = true;

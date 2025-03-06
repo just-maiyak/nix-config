@@ -36,6 +36,7 @@
       neovim
       nix-direnv
       openssl
+      ouch
       ripgrep
       skhd
       starship
@@ -43,6 +44,7 @@
       tokei
       tre-command
       vim
+      wezterm
       zoxide
       zsh
 
@@ -61,10 +63,8 @@
   # Fonts
   fonts.packages =
     with pkgs; [
-      nerd-fonts.monoid
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.anonymice
-      nerd-fonts.commit-mono
+      monoid
+      jetbrains-mono
     ];
 
   # Homebrew packages
@@ -167,8 +167,8 @@
     base16Scheme = "${inputs.tt-schemes}/base24/dracula.yaml";
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-	name = "JetBrains Mono Nerd Font";
+        package = pkgs.jetbrains-mono;
+	name = "JetBrains Mono";
       };
       sizes.terminal = 18;
     };
