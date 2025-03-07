@@ -388,8 +388,17 @@ layout_uv() {
       };
     };
 
-    wezterm.enable = true;
-    wezterm.package = pkgs.wezterm;
+    wezterm = {
+      enable = true;
+      package = pkgs.wezterm;
+
+      extraConfig = ''
+      return {
+        macos_window_background_blur = 20;
+        window_decorations = "INTEGRATED_BUTTONS|RESIZE";
+      }
+      '';
+    };
 
     zed-editor = {
       enable = true;
