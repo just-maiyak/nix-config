@@ -164,7 +164,9 @@
   stylix = {
     enable = true;
     autoEnable = true;
+
     base16Scheme = "${inputs.tt-schemes}/base24/dracula.yaml";
+
     fonts = {
       monospace = {
         package = pkgs.jetbrains-mono;
@@ -172,7 +174,7 @@
       };
       sizes.terminal = 18;
     };
-    opacity.terminal = 0.8;
 
+    opacity.terminal = 0.8;
   };
 }

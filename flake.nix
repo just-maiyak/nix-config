@@ -13,8 +13,8 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    stylix.url = "github:danth/stylix";
-    # stylix.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix/08e0c91d76e05a61ffe15bcd17ef7fa3160c5bd8";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     tt-schemes = {
       url = "github:tinted-theming/schemes";
