@@ -12,7 +12,6 @@ let
     ls = "exa --color";
     ll = "exa -al --color";
     la = "exa -al --color";
-    vim = "nvim";
 
     # Docker
     d = "docker";
@@ -41,9 +40,6 @@ in
   home.sessionVariables.EDITOR = "nvim";
 
   programs = {
-
-    neovim.enable = true;
-    neovim.package = pkgs.neovim-unwrapped;
 
     k9s = {
       enable = true;
@@ -123,7 +119,7 @@ layout_poetry() {
       enable = true;
       package = pkgs.zsh;
       inherit shellAliases;
-      initExtra = brewHook;
+      initContent = brewHook;
     };
 
     kitty = {
@@ -413,6 +409,58 @@ layout_poetry() {
 	"difftool \"nbdime\"".cmd = ''git-nbdifftool diff "$LOCAL" "$REMOTE" "$BASE"'';
 	mergetool.prompt = false;
 	"mergetool \"nbdime\"".cmd = ''git-nbmergetool merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"'';
+      };
+    };
+
+    nvf = {
+      enable = true;
+      settings = {
+        vim.package = pkgs.neovim-unwrapped;
+
+        vim.viAlias = false;
+        vim.vimAlias = true;
+
+        vim.languages = {
+          nix.enable = true;
+
+          python = {
+            enable = true;
+            lsp.enable = true;
+          };
+        };
+
+        vim.lazy.plugins = {
+          "aerial.nvim" = {
+            package = pkgs.vimPlugins.aerial-nvim;
+            setupModule = "aerial";
+            setupOpts = {
+              option_name = true;
+            };
+            after = ''
+              -- custom lua code to run after plugin is loaded
+              print('aerial loaded')
+            '';
+
+            # Explicitly mark plugin as lazy. You don't need this if you define one of
+            # the trigger "events" below
+            lazy = true;
+
+            # load on command
+            cmd = ["AerialOpen"];
+
+            # load on event
+            event = ["BufEnter"];
+
+            # load on keymap
+            keys = [
+              {
+                key = "<leader>a";
+                action = ":AerialToggle<CR>";
+                mode = "n";
+              }
+            ];
+          };
+        };
       };
     };
 

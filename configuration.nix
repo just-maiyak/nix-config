@@ -33,7 +33,7 @@
       macmon
       mactop
       neofetch
-      neovim
+      nh
       nix-direnv
       openssl
       ouch
@@ -86,6 +86,7 @@
         "bruno"
 	"daisydisk"
         "deezer"
+        "figma"
         "microsoft-teams"
         "min"
 	"obsidian"
