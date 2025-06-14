@@ -421,9 +421,17 @@ layout_poetry() {
         vim.vimAlias = true;
 
         vim.languages = {
+          enableFormat = true;
+          enableTreesitter = true;
+
           nix.enable = true;
 
           python = {
+            enable = true;
+            lsp.enable = true;
+          };
+
+          gleam = {
             enable = true;
             lsp.enable = true;
           };
