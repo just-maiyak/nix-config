@@ -9,6 +9,9 @@
     shell = pkgs.fish;
   };
 
+  # Primary User
+  system.primaryUser = "just.maiyak";
+
   # Packages
   environment.systemPackages =
     with pkgs; [
