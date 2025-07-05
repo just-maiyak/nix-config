@@ -420,11 +420,27 @@ layout_poetry() {
         vim.viAlias = false;
         vim.vimAlias = true;
 
+        vim.options = {
+          tabstop = 4;
+          shiftwidth = 0;
+          autoindent = true;
+        };
+
+        vim.treesitter = {
+          enable = true;
+          indent.enable = true;
+          fold = true;
+        };
+
         vim.languages = {
           enableFormat = true;
           enableTreesitter = true;
 
-          nix.enable = true;
+          nix = {
+            enable = true;
+            format.enable = true;
+            extraDiagnostics.enable = true;
+          };
 
           python = {
             enable = true;
