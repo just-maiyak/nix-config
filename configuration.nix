@@ -85,18 +85,20 @@
     casks = 
       [ "audacity"
         "balenaetcher"
-	"beeper"
+	    "beeper"
         "bruno"
-	"daisydisk"
+	    "daisydisk"
         "deezer"
+        "discord"
         "figma"
         "microsoft-teams"
         "min"
-	"obsidian"
+	    "obsidian"
+        "ollama"
         "openvpn-connect"
         "whatsapp"
         "zed"
-	"zotero"
+	    "zotero"
       ];
     masApps =
       { BitWarden = 1352778147;
