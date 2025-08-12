@@ -175,10 +175,7 @@
     base16Scheme = "${inputs.tt-schemes}/base24/dracula.yaml";
 
     fonts = {
-      monospace = {
-        package = pkgs.jetbrains-mono;
-	    name = "JetBrains Mono";
-      };
+      monospace.name = "JetBrains Mono";
       sizes.terminal = 18;
     };
 
