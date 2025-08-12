@@ -177,7 +177,7 @@
     fonts = {
       monospace = {
         package = pkgs.jetbrains-mono;
-	name = "JetBrains Mono";
+	    name = "JetBrains Mono";
       };
       sizes.terminal = 18;
     };
