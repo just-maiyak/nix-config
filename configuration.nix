@@ -20,6 +20,7 @@
       bashInteractive
       bat
       colordiff
+      curl
       dust
       eza
       fd
