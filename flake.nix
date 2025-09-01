@@ -7,9 +7,6 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-    lix-module.inputs.nixpkgs.follows = "nixpkgs";
-
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -26,22 +23,21 @@
 
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, lix-module, home-manager, stylix, tt-schemes, nvf }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix, tt-schemes, nvf }:
   {
     darwinConfigurations."stallion" = nix-darwin.lib.darwinSystem {
       modules =
         [ ./configuration.nix
-	  lix-module.nixosModules.default
           home-manager.darwinModules.home-manager
           {
             home-manager.useUserPackages = true;
-	    home-manager.backupFileExtension = "bak";
+            home-manager.backupFileExtension = "bak";
             home-manager.users."just.maiyak".imports = [
-	      nvf.homeManagerModules.default
-	      ./home.nix
-	    ];
+              nvf.homeManagerModules.default
+              ./home.nix
+            ];
           }
-	  stylix.darwinModules.stylix
+          stylix.darwinModules.stylix
         ];
       specialArgs = { inherit inputs; };
     };

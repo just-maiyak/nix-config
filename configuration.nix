@@ -114,6 +114,9 @@
   };
   environment.variables.HOMEBREW_NO_ANALYTICS = "1"; # No telemetry
 
+  # Use lix instead of nix
+  nix.package = pkgs.lixPackageSets.stable.lix;
+
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
