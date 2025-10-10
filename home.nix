@@ -432,12 +432,15 @@ layout_poetry() {
           fold = true;
         };
 
+        vim.lsp.enable = true;
+
         vim.languages = {
           enableFormat = true;
           enableTreesitter = true;
 
           nix = {
             enable = true;
+            lsp.enable = true;
             format.enable = true;
             extraDiagnostics.enable = true;
           };

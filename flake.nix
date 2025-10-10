@@ -13,7 +13,7 @@
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvf.url = "github:notashelf/nvf";
+    nvf.url = "github:notashelf/nvf/v0.8";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
 
     tt-schemes = {
