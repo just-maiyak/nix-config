@@ -445,6 +445,10 @@ layout_poetry() {
           python = {
             enable = true;
             lsp.enable = true;
+            format = {
+              enable = true;
+              type = "ruff";
+            };
           };
 
           gleam = {
