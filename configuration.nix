@@ -94,6 +94,7 @@
         "figma"
         "microsoft-teams"
         "min"
+        "notion"
 	    "obsidian"
         "ollama"
         "openvpn-connect"
