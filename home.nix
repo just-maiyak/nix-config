@@ -32,6 +32,9 @@ let
     kgall = "kubectl get ingress,service,deployment,pod,statefulset";
     kwatch = "kubectl get pods -w --all-namespaces";
     kru = "kubectl rollout restart deployment";
+
+    # gcloud
+    gs = "gcloud storage";
   };
 in
 {
