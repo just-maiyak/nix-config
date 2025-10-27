@@ -97,7 +97,7 @@
         "min"
         "notion"
 	    "obsidian"
-        "ollama"
+        "ollama-app"
         "openvpn-connect"
         "whatsapp"
         "zed"
