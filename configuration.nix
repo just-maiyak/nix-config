@@ -26,6 +26,7 @@
       fd
       fish
       fzf
+      fzf-git-sh
       git
       git-delete-merged-branches
       git-filter-repo
