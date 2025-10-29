@@ -75,6 +75,7 @@
   # Homebrew packages
   homebrew = {
     enable = true;
+    greedyCasks = true;
 
     onActivation = {
       autoUpdate = true;
