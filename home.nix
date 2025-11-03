@@ -34,7 +34,7 @@ let
     kru = "kubectl rollout restart deployment";
 
     # gcloud
-    gs = "gcloud storage";
+    gcs = "gcloud storage";
   };
 in
 {

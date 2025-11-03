@@ -100,6 +100,7 @@
 	    "obsidian"
         "ollama-app"
         "openvpn-connect"
+        "pdf-squeezer"
         "whatsapp"
         "zed"
 	    "zotero"
