@@ -27,6 +27,7 @@
       fish
       fzf
       fzf-git-sh
+      ghostty-bin
       git
       git-delete-merged-branches
       git-filter-repo
@@ -84,7 +85,7 @@
     };
 
     taps = [];
-    brews = [];
+    brews = [ "container" ];
     casks = 
       [ "audacity"
         "balenaetcher"
@@ -187,5 +188,8 @@
     };
 
     opacity.terminal = 0.8;
+    targets = {
+      nvf.transparentBackground = true;
+    };
   };
 }
