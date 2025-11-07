@@ -179,6 +179,9 @@ layout_poetry() {
       settings = {
         window-padding-x = 12;
         window-padding-y = "0,6";
+        background-blur = true;
+        window-save-state = "always";
+        background-opacity-cells = true;
       };
       installBatSyntax = true;
       installVimSyntax = true;
@@ -519,7 +522,7 @@ layout_poetry() {
       extraConfig = ''
       return {
         macos_window_background_blur = 20;
-        window_decorations = "INTEGRATED_BUTTONS|RESIZE";
+        window_decorations = "INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_ENABLE_SHADOW";
       }
       '';
     };
