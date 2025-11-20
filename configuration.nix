@@ -69,7 +69,6 @@
   # Fonts
   fonts.packages =
     with pkgs; [
-      monoid
       jetbrains-mono
     ];
 
@@ -104,6 +103,7 @@
         "pdf-squeezer"
         "whatsapp"
         "zed"
+        "zen"
 	    "zotero"
       ];
     masApps =
@@ -167,18 +167,19 @@
       wvous-bl-corner = 13; # Bottom left: Lock Screen
       wvous-br-corner = 14; # Bottom right: Quick Note
       wvous-tl-corner = 11; # Top left: Launchpad
-      wvous-tr-corner = 2; # Top right: Mission Control
+      wvous-tr-corner = 2;  # Top right: Mission Control
     };
-    finder.AppleShowAllExtensions = true;
-    finder.FXPreferredViewStyle = "clmv"; # Prefer Columns
-    finder.ShowHardDrivesOnDesktop = true;
+    finder = {
+      AppleShowAllExtensions = true;
+      FXPreferredViewStyle = "clmv"; # Prefer Columns
+      ShowHardDrivesOnDesktop = true;
+    };
     screencapture.location = "~/Pictures/Screenshots";
     screensaver.askForPasswordDelay = 10;
   };
 
   stylix = {
     enable = true;
-    autoEnable = true;
 
     base16Scheme = "${inputs.tt-schemes}/base24/dracula.yaml";
 

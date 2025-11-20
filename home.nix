@@ -470,7 +470,7 @@ layout_poetry() {
             lsp.enable = true;
             format = {
               enable = true;
-              type = "ruff";
+              type = ["ruff"];
             };
           };
 
