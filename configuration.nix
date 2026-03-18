@@ -9,67 +9,110 @@
     shell = pkgs.fish;
   };
 
-  # Primary User
-  system.primaryUser = "just.maiyak";
+  system = {
+    # Primary User
+    primaryUser = "just.maiyak";
 
-  # Packages
-  environment.systemPackages =
-    with pkgs; [
-      # System Tools
-      awscli2
-      bashInteractive
-      bat
-      colordiff
-      curl
-      dust
-      eza
-      fd
-      fish
-      fzf
-      fzf-git-sh
-      ghostty-bin
-      git
-      git-delete-merged-branches
-      git-filter-repo
-      glow
-      gnupg
-      htop
-      iina
-      kitty
-      macmon
-      mactop
-      neofetch
-      nh
-      nix-direnv
-      openssl
-      ouch
-      ripgrep
-      skhd
-      starship
-      tldr
-      tokei
-      tre-command
-      vim
-      wezterm
-      zoxide
-      zsh
+    # Set Git commit hash for darwin-version.
+    configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-      # Virtualisation
-      colima
-      dive
-      docker
-      docker-compose
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    stateVersion = 5;
 
-      # Languages
-      nixfmt-rfc-style
-    ];
+    # macOS options
+    defaults = {
+      dock = {
+        autohide = true;
+        minimize-to-application = true;
+        mru-spaces = false;
 
-  environment.shells = with pkgs; [ bashInteractive zsh fish ];
+        # Hot corners
+        wvous-bl-corner = 13; # Bottom left: Lock Screen
+        wvous-br-corner = 14; # Bottom right: Quick Note
+        wvous-tl-corner = 11; # Top left: Launchpad
+        wvous-tr-corner = 2;  # Top right: Mission Control
+      };
+      finder = {
+        AppleShowAllExtensions = true;
+        FXPreferredViewStyle = "clmv"; # Prefer Columns
+        ShowHardDrivesOnDesktop = true;
+      };
+      screencapture.location = "~/Pictures/Screenshots";
+      screensaver.askForPasswordDelay = 10;
+    };
+  };
+
+  environment = {
+    # Packages
+    systemPackages =
+      with pkgs; [
+        # System Tools
+        awscli2
+        bat
+        colordiff
+        curl
+        dust
+        eza
+        fastfetch
+        fd
+        fzf
+        fzf-git-sh
+        git
+        git-delete-merged-branches
+        git-filter-repo
+        glow
+        gnupg
+        htop
+        macmon
+        nh
+        nix-direnv
+        openssl
+        ouch
+        ripgrep
+        skhd
+        starship
+        tldr
+        tokei
+        tre-command
+        vim
+        zoxide
+
+        # Shells
+        bashInteractive
+        fish
+        zsh
+
+        # Terminal emulators
+        ghostty-bin
+        kitty
+        wezterm
+
+        # Multimedia
+        ffmpeg
+        iina
+
+        # Virtualisation
+        colima
+        dive
+        docker
+        docker-compose
+
+        # Languages
+        nixfmt
+      ];
+
+    shells = with pkgs; [ bashInteractive zsh fish ];
+
+    # No telemetry in brew
+    variables.HOMEBREW_NO_ANALYTICS = "1"; 
+  };
 
   # Fonts
   fonts.packages =
     with pkgs; [
       jetbrains-mono
+      raleway
     ];
 
   # Homebrew packages
@@ -83,8 +126,8 @@
       upgrade = true;
     };
 
-    taps = [];
-    brews = [ "container" ];
+    taps = [ "finnvoor/tools" ];
+    brews = [ "container" "yap" ];
     casks = 
       [ "audacity"
         "balenaetcher"
@@ -94,6 +137,7 @@
         "deezer"
         "discord"
         "figma"
+        "keycastr"
         "microsoft-teams"
         "min"
         "notion"
@@ -117,28 +161,22 @@
         Word = 462054704;
       };
   };
-  environment.variables.HOMEBREW_NO_ANALYTICS = "1"; # No telemetry
 
-  # Use lix instead of nix
-  nix.package = pkgs.lixPackageSets.stable.lix;
-
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
-
-  # Disable nix channel
-  nix.channel.enable = false;
+  nix = {
+    # Use lix instead of nix
+    package = pkgs.lixPackageSets.latest.lix;
+    # Necessary for using flakes on this system.
+    settings.experimental-features = "nix-command flakes";
+    # Disable nix channel
+    channel.enable = false;
+  };
 
   # Enable alternative shell support in nix-darwin.
-  programs.bash.enable = true;
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
-
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 5;
+  programs = {
+    bash.enable = true;
+    zsh.enable = true;
+    fish.enable = true;
+  };
 
   # Automatic cleanup
   nix.gc.automatic = true;
@@ -156,30 +194,10 @@
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
 
-  # macOS options
-  system.defaults = {
-    dock = {
-      autohide = true;
-      minimize-to-application = true;
-      mru-spaces = false;
-
-      # Hot corners
-      wvous-bl-corner = 13; # Bottom left: Lock Screen
-      wvous-br-corner = 14; # Bottom right: Quick Note
-      wvous-tl-corner = 11; # Top left: Launchpad
-      wvous-tr-corner = 2;  # Top right: Mission Control
-    };
-    finder = {
-      AppleShowAllExtensions = true;
-      FXPreferredViewStyle = "clmv"; # Prefer Columns
-      ShowHardDrivesOnDesktop = true;
-    };
-    screencapture.location = "~/Pictures/Screenshots";
-    screensaver.askForPasswordDelay = 10;
-  };
 
   stylix = {
     enable = true;
+    autoEnable = true;
 
     base16Scheme = "${inputs.tt-schemes}/base24/dracula.yaml";
 
