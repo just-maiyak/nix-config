@@ -411,7 +411,7 @@ layout_poetry() {
 	    fetch.prune = true;
         push = {
           autoSetupRemote = true;
-          default = "matching";
+          default = "current";
         };
         branch.autoSetupMerge = "simple";
 	    pull = {
@@ -443,6 +443,8 @@ layout_poetry() {
 
         viAlias = false;
         vimAlias = true;
+
+        globals.mapleader = ",";
 
         options = {
           tabstop = 4;
