@@ -409,7 +409,11 @@ layout_poetry() {
         };
 	    init.defaultBranch = "main";
 	    fetch.prune = true;
-	    push.autoSetupRemote = true;
+        push = {
+          autoSetupRemote = true;
+          default = "matching";
+        };
+        branch.autoSetupMerge = "simple";
 	    pull = {
 	      twohead = "ort";
 	      rebase = true;
@@ -434,27 +438,27 @@ layout_poetry() {
 
     nvf = {
       enable = true;
-      settings = {
-        vim.package = pkgs.neovim-unwrapped;
+      settings.vim = {
+        package = pkgs.neovim-unwrapped;
 
-        vim.viAlias = false;
-        vim.vimAlias = true;
+        viAlias = false;
+        vimAlias = true;
 
-        vim.options = {
+        options = {
           tabstop = 4;
           shiftwidth = 0;
           autoindent = true;
         };
 
-        vim.treesitter = {
+        treesitter = {
           enable = true;
           indent.enable = true;
           fold = true;
         };
 
-        vim.lsp.enable = true;
+        lsp.enable = true;
 
-        vim.languages = {
+        languages = {
           enableFormat = true;
           enableTreesitter = true;
 
@@ -480,7 +484,7 @@ layout_poetry() {
           };
         };
 
-        vim.lazy.plugins = {
+        lazy.plugins = {
           "aerial.nvim" = {
             package = pkgs.vimPlugins.aerial-nvim;
             setupModule = "aerial";
@@ -510,6 +514,12 @@ layout_poetry() {
                 mode = "n";
               }
             ];
+          };
+
+          "diffview.nvim" = {
+            package = pkgs.vimPlugins.diffview-nvim;
+
+            cmd = ["DiffviewOpen"];
           };
         };
       };

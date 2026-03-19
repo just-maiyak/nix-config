@@ -75,7 +75,6 @@
         tldr
         tokei
         tre-command
-        vim
         zoxide
 
         # Shells
