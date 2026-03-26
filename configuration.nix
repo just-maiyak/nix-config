@@ -61,6 +61,7 @@
         git
         git-delete-merged-branches
         git-filter-repo
+        git-lfs
         glow
         gnupg
         htop
