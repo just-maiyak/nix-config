@@ -385,6 +385,7 @@ layout_poetry() {
     git = {
       enable = true;
       package = pkgs.git;
+      lfs.enable = true;
       settings = {
         alias = {
           a = "add";
