@@ -23,7 +23,10 @@
 
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix, tt-schemes, nvf }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix, tt-schemes, nvf, ... }:
+  let
+    vars = import ./vars;
+  in
   {
     darwinConfigurations."stallion" = nix-darwin.lib.darwinSystem {
       modules =
@@ -32,9 +35,10 @@
           {
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "bak";
+            home-manager.extraSpecialArgs = vars;
             home-manager.users."just.maiyak".imports = [
               nvf.homeManagerModules.default
-              ./home.nix
+              ./hm/stallion.nix
             ];
           }
           stylix.darwinModules.stylix
