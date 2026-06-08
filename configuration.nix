@@ -122,11 +122,10 @@
 
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall";
       upgrade = true;
     };
 
-    taps = [ "finnvoor/tools" ];
+    taps = [ "maiyak/local" ];
     brews = [ "container" "yap" ];
     casks = 
       [ "audacity"
@@ -145,6 +144,7 @@
         "ollama-app"
         "openvpn-connect"
         "pdf-squeezer"
+        "touchdesigner"
         "whatsapp"
         "zed"
         "zen"

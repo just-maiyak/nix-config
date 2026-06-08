@@ -38,9 +38,19 @@ let
   };
 in
 {
-  home.stateVersion = "24.11";
+  home.stateVersion = "26.05";
 
   home.sessionVariables.EDITOR = "nvim";
+
+  targets.darwin = {
+    copyApps = {
+      enable = false;
+      # disable checks as they're bugged
+      # https://github.com/nix-community/home-manager/issues/8336
+      enableChecks = false;
+    };
+    linkApps.enable = true;
+  };
 
   programs = {
 
