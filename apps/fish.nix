@@ -1,10 +1,10 @@
-{pkgs, shellAliases, brewHook, ...}:
+{pkgs, vars, ...}:
 
 {
   programs.fish = {
     enable = true;
     package = pkgs.fish;
-    inherit shellAliases;
-    loginShellInit = brewHook;
+    inherit (vars) shellAliases;
+    loginShellInit = vars.brewHook;
   };
 }
