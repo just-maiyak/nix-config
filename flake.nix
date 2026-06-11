@@ -21,16 +21,35 @@
 
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, stylix, tt-schemes, nvf, ... }:
+  outputs = {
+    self,
+    nixpkgs,
+    nix-darwin,
+    home-manager,
+    stylix,
+    nvf,
+    tt-schemes,
+    ...
+  } @ inputs:
   let
+    libs = nixpkgs.lib // nix-darwin.lib // import ./lib;
     vars = import ./vars;
-    libs = nixpkgs.lib // nix-darwin.lib;
-    args = {};
+    specialArgs = {};
+
+    stallion = import ./hosts/stallion {
+        inherit inputs libs vars specialArgs;
+      };
+
+    furrball = import ./hosts/furrball {
+        inherit inputs libs vars specialArgs;
+      };
+
+    behemoth = import ./hosts/behemoth {
+        inherit inputs libs vars specialArgs;
+      };
   in
   {
-    darwinConfigurations.stallion = 
-      import ./hosts/stallion { specialArgs = args; inherit inputs vars libs; };
-
-    homeConfigurations.yefimchuk = import ./hosts/behemoth { specialArgs = args; inherit inputs vars libs; };
+    darwinConfigurations = { inherit stallion furrball; };
+    homeConfigurations = { inherit behemoth; };
   };
 }

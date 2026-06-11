@@ -12,7 +12,7 @@ libs.mkDarwinSystem {
     ];
 
   home-modules =
-    [ ../../hm/stallion.nix
+    [ ../../hm/furrball.nix
       inputs.nvf.homeManagerModules.default
     ];
 }
