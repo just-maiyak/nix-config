@@ -1,10 +1,10 @@
-{pkgs, shellAliases, brewHook, ...}:
+{pkgs, vars, ...}:
 
 {
   programs.zsh = {
     enable = true;
     package = pkgs.zsh;
-    inherit shellAliases;
-    initContent = brewHook;
+    inherit (vars) shellAliases;
+    initContent = vars.brewHook;
   };
 }

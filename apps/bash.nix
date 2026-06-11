@@ -1,9 +1,9 @@
-{pkgs, shellAliases, brewHook, ...}:
+{pkgs, vars, ...}:
 {
   programs.bash = {
     enable = true;
     package = pkgs.bash;
-    inherit shellAliases;
-    initExtra = brewHook;
+    inherit (vars) shellAliases;
+    initExtra = vars.brewHook;
   };
 }

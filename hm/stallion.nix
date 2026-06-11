@@ -1,4 +1,4 @@
-{...}:
+{libs, ...}:
 
 {
   home.stateVersion = "26.05";
@@ -33,5 +33,6 @@
     ../apps/zsh.nix
   ];
 
+  programs.ghostty.settings.font-size = libs.mkForce 15;
   programs.home-manager.enable = true;
 }

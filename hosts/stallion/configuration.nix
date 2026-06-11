@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ...}:
+{ pkgs, inputs, ...}:
 {
   # Users
   users.knownUsers = [ "just.maiyak" ];
