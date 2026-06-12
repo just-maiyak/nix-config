@@ -34,6 +34,7 @@
   let
     libs = nixpkgs.lib // nix-darwin.lib // import ./lib;
     vars = import ./vars;
+    pkgs = nixpkgs;
     specialArgs = {};
 
     stallion = import ./hosts/stallion {
@@ -46,10 +47,11 @@
 
     behemoth = import ./hosts/behemoth {
         inherit inputs libs vars specialArgs;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
   in
   {
     darwinConfigurations = { inherit stallion furrball; };
-    homeConfigurations = { inherit behemoth; };
+    homeConfigurations = { inherit (behemoth) yefimchuk; };
   };
 }
