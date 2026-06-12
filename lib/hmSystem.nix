@@ -2,10 +2,13 @@
   inputs,
   libs,
   vars,
+  pkgs,
   specialArgs ? { },
+  username,
   home-modules,
 }:
 inputs.home-manager.lib.homeManagerConfiguration {
-    extraSpecialArgs = specialArgs // { inherit inputs libs vars; };
+    inherit pkgs;
+    extraSpecialArgs = specialArgs // { inherit inputs libs vars username; };
     modules = home-modules;
   }
