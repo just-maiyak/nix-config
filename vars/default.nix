@@ -7,9 +7,9 @@
     du = "dust";
     j = "cd";
     jk = ''cd "$STRUKTUR_PATH"'';
-    ls = "exa --color";
-    ll = "exa -al --color";
-    la = "exa -al --color";
+    ls = "exa --color always";
+    ll = "exa -al --color always";
+    la = "exa -al --color always";
 
     # Docker
     d = "docker";

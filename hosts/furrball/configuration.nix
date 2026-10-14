@@ -199,7 +199,7 @@
     enable = true;
     autoEnable = true;
 
-    base16Scheme = "${inputs.tt-schemes}/base24/dracula.yaml";
+    base16Scheme = "${inputs.stylix.inputs.tinted-schemes}/base24/dracula.yaml";
 
     fonts = {
       monospace.name = "JetBrains Mono";

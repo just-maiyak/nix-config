@@ -22,13 +22,13 @@
     ../apps/fzf.nix
     ../apps/git.nix
     ../apps/ghostty.nix
+    ../apps/helix.nix
     ../apps/k9s.nix
     ../apps/kitty.nix
     ../apps/man.nix
     ../apps/nvf.nix
     ../apps/starship.nix
     ../apps/wezterm.nix
-    ../apps/zed.nix
     ../apps/zoxide.nix
     ../apps/zsh.nix
   ];

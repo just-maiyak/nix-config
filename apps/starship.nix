@@ -72,7 +72,7 @@
         };
 
         git_state = {
-          format = "\([$state( $progress_current/$progress_total)]($style)\) ";
+          format = "\\([$state( $progress_current/$progress_total)]($style)\\) ";
           style = "bright-black";
         };
 
@@ -97,7 +97,7 @@
         gcloud = {
           symbol = "g ";
           style = "dimmed cyan";
-          format = "[$symbol:$account(\($region\))]($style) ";
+          format = "[$symbol:$account(\\($region\\))]($style) ";
         };
 
         conda = {
