@@ -14,5 +14,6 @@ libs.mkDarwinSystem {
   home-modules =
     [ ../../hm/stallion.nix
       inputs.nvf.homeManagerModules.default
+      inputs.tidalcycles-nix.homeManagerModules.default
     ];
 }

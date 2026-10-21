@@ -22,6 +22,9 @@
 
     nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
+
+    tidalcycles-nix.url = "github:DivitMittal/tidalcycles-nix";
+
   };
 
   outputs = {

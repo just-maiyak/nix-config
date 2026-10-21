@@ -28,6 +28,7 @@
     ../apps/man.nix
     ../apps/nvf.nix
     ../apps/starship.nix
+    ../apps/tidalcycles.nix
     ../apps/wezterm.nix
     ../apps/zoxide.nix
     ../apps/zsh.nix
